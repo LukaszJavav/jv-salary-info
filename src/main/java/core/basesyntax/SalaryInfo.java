@@ -15,24 +15,26 @@ public class SalaryInfo {
                 .append(start.format(FORMATTER))
                 .append(" - ")
                 .append(end.format(FORMATTER))
-                .append("\n");
+                .append(System.lineSeparator());
         for (String name : names) {
             int salary = 0;
 
             for (int i = 0; i < data.length; i++) {
                 String[] parts = data[i].split(" ");
-                LocalDate localDate1 = LocalDate.parse(parts[0], FORMATTER);
+                LocalDate saveDate = LocalDate.parse(parts[0], FORMATTER);
                 String employeeName = parts[1];
                 int hours = Integer.parseInt(parts[2]);
                 int income = Integer.parseInt(parts[3]);
-                if (employeeName.equals(name) && !localDate1.isBefore(start) && !localDate1.isAfter(end)) {
+                if (employeeName.equals(name)
+                        && !saveDate.isBefore(start)
+                        && !saveDate.isAfter(end)) {
                     salary += hours * income;
                 }
             }
             builder.append(name)
                     .append(" - ")
                     .append(salary)
-                    .append("\n");
+                    .append(System.lineSeparator());
         }
         return builder.toString();
     }
