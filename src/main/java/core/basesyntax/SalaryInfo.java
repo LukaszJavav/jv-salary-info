@@ -16,10 +16,11 @@ public class SalaryInfo {
                 .append(" - ")
                 .append(end.format(FORMATTER))
                 .append(System.lineSeparator());
-        for (String name : names) {
+        for (int i = 0; i < names.length; i++) {
+            String name = names[i];
             int salary = 0;
 
-            for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data.length; j++) {
                 String[] parts = data[i].split(" ");
                 LocalDate saveDate = LocalDate.parse(parts[0], FORMATTER);
                 String employeeName = parts[1];
@@ -33,8 +34,11 @@ public class SalaryInfo {
             }
             builder.append(name)
                     .append(" - ")
-                    .append(salary)
-                    .append(System.lineSeparator());
+                    .append(salary);
+
+            if (i < names.length - 1) {
+                builder.append(System.lineSeparator());
+            }
         }
         return builder.toString();
     }
