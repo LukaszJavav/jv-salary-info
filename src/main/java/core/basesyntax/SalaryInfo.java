@@ -21,7 +21,7 @@ public class SalaryInfo {
             int salary = 0;
 
             for (int j = 0; j < data.length; j++) {
-                String[] parts = data[i].split(" ");
+                String[] parts = data[j].split(" ");
                 LocalDate saveDate = LocalDate.parse(parts[0], FORMATTER);
                 String employeeName = parts[1];
                 int hours = Integer.parseInt(parts[2]);
